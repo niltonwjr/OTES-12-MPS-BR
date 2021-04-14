@@ -18,19 +18,7 @@ namespace Projetos.Models
 
 		public Projeto(long numero, decimal valorOrçamento, DateTime dataInicio, string identificador,  string descricao, List<Requisitos> requisitos) 
 		{
-			Requisitos = new List<Requisitos>();
-			Id = Guid.NewGuid();
-			Numero = numero;
-			Orçamento = valorOrçamento;
-			Identificador = identificador;
-			Descricao = descricao;
-			DataInicio = dataInicio;
-
-			if (string.IsNullOrEmpty(identificador))
-				throw new ArgumentNullException($"Necessário informar: {nameof(identificador)}");
-
-			if (requisitos != null)
-				Requisitos = requisitos;
+			
 		}
 
 	}

@@ -2,6 +2,7 @@
 using Projetos.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Projetos.Services
 {
@@ -10,12 +11,10 @@ namespace Projetos.Services
 		private List<Projeto> _projetos = new List<Projeto>();
 		public ProjetosService()
 		{
-			_projetos.Clear();
-			
+			_projetos = new List<Projeto>();
 
-		}
+		}		
 
-		
 		public List<Projeto> GetAll()
 		{
 
@@ -29,12 +28,55 @@ namespace Projetos.Services
 
 		public long CadastrarProjeto(Projeto projeto)
 		{
+			if (projeto == null)
+				throw new ApplicationException("Necessário informar os dados do projeto");
+
+			if (endereco.Rua == null)
+				throw new ApplicationException("Necessário informar a rua");
+
+			if (endereco.Numero == null)
+				throw new ApplicationException("Necessário informar o número");
+
+			if (endereco.Bairro == null)
+				throw new ApplicationException("Necessário informar o bairro");
+
+			if (string.IsNullOrEmpty(descricaoDosMateriais))
+				throw new ApplicationException("Necessário informar a descricação dos materiais");
+
+
+			var cadastroEntulho = new Projeto()
+			{
+
+				Id = Guid.NewGuid(),
+				NumeroAtendimento = _listaEntulhos.Count + 1,
+				Endereco = endereco,
+				DescricaoMateriais = descricaoDosMateriais,
+				DataInclusao = DateTime.Now,
+				DataPrevisaoAtendimento = DateTime.Now.AddDays(3),
+				Situacao = SituacaoRecolhimento.Novo,
+
+			};
+
+			_listaEntulhos.Add(cadastroEntulho);
+
+			Console.WriteLine("Lista de entulhos cadastrados:" + _listaEntulhos.Count);
+
+			return _listaEntulhos.Count;
+
+			public long EncerrarProjeto(long numeroProjeto)
+		{
 			throw new NotImplementedException();
 		}
 
-		public long EncerrarProjeto(long numeroProjeto)
+
+		private Projeto GetObjRecolhimento(long numeroProjeto)
 		{
-			throw new NotImplementedException();
+			var projeto = _projetos.FirstOrDefault(h => h.Numero == numeroProjeto);
+
+			if (projeto == null)
+				throw new ApplicationException("Projeto nao encontrado");
+
+			return projeto;
 		}
 	}
 }
