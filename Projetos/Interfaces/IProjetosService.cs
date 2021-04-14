@@ -7,7 +7,7 @@ namespace Projetos.Interfaces
 	{
 		List<Projeto> GetAll();
 		long CadastrarProjeto(Projeto projeto);
-		long AdicionarRequisitos(long numeroProjeto, List<Requisitos> requisitos);
+		void AdicionarRequisitos(long numeroProjeto, List<Requisitos> requisitos);
 
 	}
 }

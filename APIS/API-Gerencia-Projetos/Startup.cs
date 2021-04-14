@@ -11,7 +11,7 @@ using Projetos.Interfaces;
 using Projetos.Services;
 using System.Text;
 
-namespace API_Projetos
+namespace API_Projetos_Gerencia
 {
 	public class Startup
 	{
@@ -28,7 +28,7 @@ namespace API_Projetos
 			services.AddCors();
 			services.AddControllers();
 
-			services.AddSingleton<IProjetosService, ProjetosService>();
+			services.AddSingleton<IGerenciaProjetosService, GerenciaProjetosService>();
 
 			var key = Encoding.ASCII.GetBytes(Settings.Secret);
 			services.AddAuthentication(x =>
@@ -54,7 +54,7 @@ namespace API_Projetos
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo
 				{
-					Title = "Projetos ",
+					Title = "Projetos - Gerencia",
 					Version = "v1"
 				});
 				c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -107,7 +107,7 @@ namespace API_Projetos
 			// specifying the Swagger JSON endpoint.
 			app.UseSwaggerUI(c =>
 			{
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Projetos V1");
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Projetos - Gerencia V1");
 			});
 
 		}

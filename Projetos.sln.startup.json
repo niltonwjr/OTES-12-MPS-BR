@@ -24,10 +24,12 @@
         }
     */
     "MultiProjectConfigurations": {
-        "Auth + Projetos": {
+        "Auth + Apis": {
             "Projects": {
                 "API-Auth": {},
-                "API-Projetos": {}
+                //"API-Projetos": {},
+                "API-Projetos-Gerencia": {}
+                //"API-Projetos-Metricas": {}
             }
         }
     }

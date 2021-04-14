@@ -56,13 +56,15 @@ namespace Projetos.Services
 			return projeto.Numero;
 		}
 
-		public long AdicionarRequisitos(long numeroProjeto, List<Requisitos> requisitos)
+		public void AdicionarRequisitos(long numeroProjeto, List<Requisitos> requisitos)
 		{
-			throw new NotImplementedException();
+			var projeto = GetProjeto(numeroProjeto);
+
+			projeto.Requisitos.AddRange(requisitos);
 		}
 
 
-		private Projeto GetObjRecolhimento(long numeroProjeto)
+		private Projeto GetProjeto(long numeroProjeto)
 		{
 			var projeto = _projetos.FirstOrDefault(h => h.Numero == numeroProjeto);
 

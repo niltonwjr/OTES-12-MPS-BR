@@ -3,6 +3,6 @@
 	public class Requisitos
 	{
 		public string Titulo { get; set; }
-		public int Descricao { get; set; }
+		public string Descricao { get; set; }
 	}
 }

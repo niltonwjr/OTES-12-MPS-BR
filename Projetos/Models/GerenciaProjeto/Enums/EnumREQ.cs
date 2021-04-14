@@ -13,7 +13,7 @@ namespace Projetos.Models
 		REQ_5 = 5,
 		[Description("A rastreabilidade bidirecional entre requisitos, atividades e produtos de trabalho do projeto é estabelecida e mantida.")]
 		REQ_6 = 6,
-		[Description("A estratégia de transição para operação e suporte do produto, incluindo as tarefas e o cronograma, é planejada.")]
+		[Description("Os planos, atividades e produtos de trabalho relacionados são revisados visando identificar e tratar inconsistência em relação aos requisitos.")]
 		REQ_7 = 7
 	}
 }

@@ -6,9 +6,10 @@ namespace Projetos.Interfaces
 	public interface IGerenciaProjetosService
 	{
 		List<GerenciaProjeto> GetAll();
-		long CadastrarProjeto(string identificadorProjeto);
-		void AdicionarEvidenciaGPR(long numeroProjeto, List<EvidenciasGPR> evidencias);
-		void AdicionarEvidenciaREQ(long numeroProjeto, List<EvidenciasREQ> evidencias);
+		void CadastrarProjeto(string identificadorProjeto);
+		void AdicionarEvidenciaGPR(string identificadorProjeto, List<EvidenciasGPR> evidencias);
+		void AdicionarEvidenciaREQ(string identificadorProjeto, List<EvidenciasREQ> evidencias);
+		void AdicionarEvidenciaCapacidade(string identificadorProjeto, List<EvidenciasCapacidade> evidencias);
 
 	}
 }
