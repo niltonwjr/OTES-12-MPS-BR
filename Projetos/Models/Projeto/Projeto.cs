@@ -10,10 +10,11 @@ namespace Projetos.Models
 		public long Numero { get; set; }
 		public string Identificador { get; set; }
 		public string Descricao { get; set; }
-		public DateTime DataInicio { get; set; }
-		public List<Requisitos> Requisitos { get; set; }
+		public DateTime DataCadastro { get; set; }
+		public DateTime DataPrevistaInicio { get; set; }
 		public DateTime DataPrevistaFim { get; set; }
 		public decimal Orçamento { get; set; }
+		public List<Requisitos> Requisitos { get; set; }
 
 
 		public Projeto(long numero, decimal valorOrçamento, DateTime dataInicio, string identificador,  string descricao, List<Requisitos> requisitos) 

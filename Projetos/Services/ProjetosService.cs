@@ -13,7 +13,7 @@ namespace Projetos.Services
 		{
 			_projetos = new List<Projeto>();
 
-		}		
+		}
 
 		public List<Projeto> GetAll()
 		{
@@ -21,49 +21,42 @@ namespace Projetos.Services
 			return _projetos;
 		}
 
-		public long AdicionarRequisitos(long numeroProjeto, List<Requisitos> requisitos)
-		{
-			throw new NotImplementedException();
-		}
-
 		public long CadastrarProjeto(Projeto projeto)
 		{
 			if (projeto == null)
 				throw new ApplicationException("Necessário informar os dados do projeto");
 
-			if (endereco.Rua == null)
-				throw new ApplicationException("Necessário informar a rua");
+			if (String.IsNullOrEmpty(projeto.Identificador))
+				throw new ApplicationException("Necessário informar o identificador do projeto");
 
-			if (endereco.Numero == null)
-				throw new ApplicationException("Necessário informar o número");
+			if (String.IsNullOrEmpty(projeto.Descricao))
+				throw new ApplicationException("Necessário informar o descrição do projeto");
 
-			if (endereco.Bairro == null)
-				throw new ApplicationException("Necessário informar o bairro");
+			if (projeto.Orçamento <= 0)
+				throw new ApplicationException("Necessário informar o valor orçado do projeto");
 
-			if (string.IsNullOrEmpty(descricaoDosMateriais))
-				throw new ApplicationException("Necessário informar a descricação dos materiais");
+			if (projeto.DataPrevistaInicio.Date < DateTime.Now.Date)
+				throw new ApplicationException("Data prevista do início não pode ser menor que a data atual");
 
 
-			var cadastroEntulho = new Projeto()
-			{
+			if (projeto.DataPrevistaFim.Date < projeto.DataPrevistaInicio.Date)
+				throw new ApplicationException("Data prevista do início não pode ser menor que a data atual");
 
-				Id = Guid.NewGuid(),
-				NumeroAtendimento = _listaEntulhos.Count + 1,
-				Endereco = endereco,
-				DescricaoMateriais = descricaoDosMateriais,
-				DataInclusao = DateTime.Now,
-				DataPrevisaoAtendimento = DateTime.Now.AddDays(3),
-				Situacao = SituacaoRecolhimento.Novo,
+			if (_projetos.Any(x => x.Identificador.ToUpper().Trim() == projeto.Identificador.ToUpper().Trim()))
+				throw new ApplicationException("Já existe outro projeto cadastrado com o mesmo identificador.");
 
-			};
 
-			_listaEntulhos.Add(cadastroEntulho);
+			projeto.Id = Guid.NewGuid();
+			projeto.Numero = _projetos.Count + 1;
 
-			Console.WriteLine("Lista de entulhos cadastrados:" + _listaEntulhos.Count);
 
-			return _listaEntulhos.Count;
+			_projetos.Add(projeto);
 
-			public long EncerrarProjeto(long numeroProjeto)
+
+			return projeto.Numero;
+		}
+
+		public long AdicionarRequisitos(long numeroProjeto, List<Requisitos> requisitos)
 		{
 			throw new NotImplementedException();
 		}
