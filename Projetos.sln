@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API-Auth", "APIS\API-Auth\A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-Projetos-Gerencia", "APIS\API-Gerencia-Projetos\API-Projetos-Gerencia.csproj", "{240F912B-E7C6-4B6B-A361-7FCE3637418B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-Projetos-Metricas", "API-Projetos-Metricas\API-Projetos-Metricas.csproj", "{781D8497-A419-4795-894A-4A740EB6632D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-Projetos-Metricas", "APIS\API-Projetos-Metricas\API-Projetos-Metricas.csproj", "{781D8497-A419-4795-894A-4A740EB6632D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{17CE4A1C-B142-46A1-811A-AB9287CD67FC}"
 EndProject
