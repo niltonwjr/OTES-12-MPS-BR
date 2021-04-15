@@ -29,7 +29,7 @@ namespace API_Projetos.Controllers
 		}
 
 		[HttpPost("Cadastrar")]
-		public ActionResult<CadastrarProjetoResponse> Cadastrar([FromQuery] CadastrarProjetoRequest cadastroRequest)
+		public ActionResult Cadastrar([FromQuery] CadastrarProjetoRequest cadastroRequest)
 		{
 			try
 			{
@@ -42,7 +42,7 @@ namespace API_Projetos.Controllers
 					Orçamento = cadastroRequest.Orçamento
 				});
 
-				return new CadastrarProjetoResponse() { NumeroProjeto = numeroProjeto };
+				return Ok();
 			}
 			catch (Exception ex)
 			{
@@ -52,12 +52,12 @@ namespace API_Projetos.Controllers
 
 
 		[HttpPost("AdicionarRequisitos")]
-		public ActionResult AdicionarRequisitos([FromQuery]long numeroProjeto, [FromQuery]List<Requisitos> requisitos)
+		public ActionResult AdicionarRequisitos(string identificadoreProjeto, List<Requisitos> requisitos)
 		{
 
 			try
 			{
-				_projetosService.AdicionarRequisitos(numeroProjeto, requisitos);
+				_projetosService.AdicionarRequisitos(identificadoreProjeto, requisitos);
 
 				return Ok();
 			}

@@ -56,17 +56,17 @@ namespace Projetos.Services
 			return projeto.Numero;
 		}
 
-		public void AdicionarRequisitos(long numeroProjeto, List<Requisitos> requisitos)
+		public void AdicionarRequisitos(string identificadorProjeto, List<Requisitos> requisitos)
 		{
-			var projeto = GetProjeto(numeroProjeto);
+			var projeto = GetProjeto(identificadorProjeto);
 
 			projeto.Requisitos.AddRange(requisitos);
 		}
 
 
-		private Projeto GetProjeto(long numeroProjeto)
+		private Projeto GetProjeto(string identificadorProjeto)
 		{
-			var projeto = _projetos.FirstOrDefault(h => h.Numero == numeroProjeto);
+			var projeto = _projetos.FirstOrDefault(h => h.Identificador.ToUpper().Trim() == identificadorProjeto.ToUpper().Trim());
 
 			if (projeto == null)
 				throw new ApplicationException("Projeto nao encontrado");
